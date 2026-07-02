@@ -12,10 +12,7 @@
 <nav class="site-nav">
   <div class="wrap">
     <a class="brand" href="index.html">
-      <svg class="brand-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-        <circle cx="14" cy="20" r="9" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
-        <path d="M26 11c6 0 8 5 8 9s-2 9-8 9c3-2 4-6 4-9s-1-7-4-9z" fill="#D32F2F" stroke="#D32F2F" stroke-width="1"/>
-      </svg>
+      <img class="brand-mark" src="logo.png" alt="Logo WarriorsCare">
       WarriorsCare
     </a>
     <ul class="nav-links">
@@ -26,7 +23,7 @@
       <li><a href="privacy-policy.html">Confidentialité</a></li>
     </ul>
     <div class="nav-cta">
-      <a class="btn btn-ghost btn-sm" href="faq.html">FAQ</a>
+      <a class="btn btn-ghost btn-sm" href="#acces">Télécharger</a>
       <a class="btn btn-primary btn-sm" href="https://drepanosmobile.expo.app" target="_blank" rel="noopener">Ouvrir l'app</a>
       <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -49,20 +46,21 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
         Vos données de santé restent privées et chiffrées.
       </p>
+      <p class="hero-note"><span aria-hidden="true">❤️</span>&nbsp;Conçu avec des personnes vivant avec la drépanocytose.</p>
     </div>
 
     <div class="hero-visual">
-      <svg class="pulse-wrap" viewBox="0 0 480 360" fill="none" aria-hidden="true">
-        <path class="pulse-line" d="M40,180 C110,180 110,60 180,60 C230,60 220,140 260,140 C300,140 300,300 350,300 C400,300 400,180 440,180"/>
-        <g class="pulse-cell" style="--d:0.1"><circle cx="40" cy="180" r="13"/></g>
-        <g class="pulse-cell" style="--d:0.3"><path class="sickle" d="M180 46c11 0 20 8 20 18 0 9-6 16-14 18 5-5 7-11 7-18 0-9-5-15-13-18z" transform="translate(0,-4)"/></g>
-        <g class="pulse-cell" style="--d:0.5"><circle cx="260" cy="140" r="13"/></g>
-        <g class="pulse-cell" style="--d:0.7"><path class="sickle" d="M350 286c11 0 20 8 20 18 0 9-6 16-14 18 5-5 7-11 7-18 0-9-5-15-13-18z" transform="translate(0,-4)"/></g>
-        <g class="pulse-cell" style="--d:0.9"><circle cx="440" cy="180" r="13"/></g>
-      </svg>
+      <img src="img/shot-dashboard.jpg" alt="Tableau de bord WarriorsCare : score de risque, bouton « Je suis en crise », journal du jour et conseils personnalisés." style="border-radius:20px; box-shadow:var(--shadow-card); max-width:340px;">
     </div>
   </div>
 </header>
+
+<div class="stat-strip">
+  <div class="wrap">
+    <span class="stat-num">20 millions+</span>
+    <p>de personnes vivent avec la drépanocytose dans le monde. WarriorsCare les accompagne chaque jour — une maladie chronique, une communauté, une seule plateforme.</p>
+  </div>
+</div>
 
 <div class="divider">
   <div class="wrap">
@@ -83,6 +81,11 @@
       <h2>Transformer l'incertitude d'une crise en gestes préparés</h2>
       <p class="lede">La drépanocytose se vit au quotidien, souvent en dehors de l'hôpital. WarriorsCare met entre les mains des patients et de leur entourage les outils pour suivre l'évolution, anticiper les crises et ne jamais se sentir seul·e face à la maladie.</p>
     </div>
+
+    <div class="story-box reveal">
+      <p><span class="heart" aria-hidden="true">❤</span>WarriorsCare est née d'une conviction simple&nbsp;: vivre avec la drépanocytose ne devrait jamais signifier affronter la maladie seul. Nous avons créé une plateforme qui réunit patients, familles, professionnels de santé, associations et bénévoles afin de faciliter le suivi quotidien, renforcer l'entraide et améliorer la prise en charge.</p>
+    </div>
+
     <div class="grid grid-3">
       <div class="card reveal">
         <div class="card-icon">
@@ -116,35 +119,43 @@
       <h2>Tout ce qu'il faut, rien de superflu</h2>
     </div>
     <div class="grid grid-3">
-      <div class="card reveal">
-        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-        <h3>Suivi santé</h3>
-        <p>Enregistrez douleurs, symptômes et traitements chaque jour pour garder une vue claire de votre état.</p>
+      <div class="card-shot reveal">
+        <img src="img/shot-journal.jpg" alt="Écran Journal de santé de WarriorsCare avec suivi de l'hydratation, l'humeur, l'énergie et le sommeil.">
+        <div class="card-shot-body">
+          <h3>Suivi santé</h3>
+          <p>Enregistrez douleurs, symptômes et traitements chaque jour pour garder une vue claire de votre état.</p>
+        </div>
       </div>
       <div class="card reveal">
         <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
         <h3>Alertes de crise</h3>
         <p>Signalez une crise vaso-occlusive et prévenez automatiquement les proches ou soignants concernés.</p>
       </div>
-      <div class="card reveal">
-        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
-        <h3>Communauté &amp; messagerie</h3>
-        <p>Échangez en toute sécurité avec d'autres patients, familles, bénévoles et associations.</p>
+      <div class="card-shot reveal">
+        <img src="img/shot-communaute.jpg" alt="Écran Messages de WarriorsCare : conversations avec un médecin, un groupe de soutien, un infirmier, une bénévole et une association.">
+        <div class="card-shot-body">
+          <h3>Communauté &amp; messagerie</h3>
+          <p>Échangez en toute sécurité avec d'autres patients, familles, bénévoles et associations.</p>
+        </div>
       </div>
       <div class="card reveal">
         <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c-4 5-8 8.5-8 13a8 8 0 0 0 16 0c0-4.5-4-8-8-13z"/></svg></div>
         <h3>Don de sang &amp; médicaments</h3>
         <p>Publiez ou répondez à des demandes de sang et de médicaments près de chez vous.</p>
       </div>
-      <div class="card reveal">
-        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="6" y1="15" x2="10" y2="15"/><circle cx="16" cy="12" r="2"/></svg></div>
-        <h3>Carte d'urgence</h3>
-        <p>Groupe sanguin, allergies, contacts et traitement en cours, accessibles même hors ligne.</p>
+      <div class="card-shot reveal">
+        <img src="img/shot-urgence.jpg" alt="Écran Profil de WarriorsCare avec la carte d'urgence, la géolocalisation et les informations de sécurité.">
+        <div class="card-shot-body">
+          <h3>Carte d'urgence</h3>
+          <p>Groupe sanguin, allergies, contacts et traitement en cours, accessibles même hors ligne.</p>
+        </div>
       </div>
-      <div class="card reveal">
-        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <h3>Réseau de soins</h3>
-        <p>Repérez les centres de prise en charge, associations et professionnels proches de vous.</p>
+      <div class="card-shot reveal">
+        <img src="img/shot-reseau.jpg" alt="Écran Réseau de soins de WarriorsCare listant des hôpitaux et associations près de Yaoundé.">
+        <div class="card-shot-body">
+          <h3>Réseau de soins</h3>
+          <p>Repérez les centres de prise en charge, associations et professionnels proches de vous.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -152,22 +163,56 @@
 
 <section id="pour-qui">
   <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">Pour qui</p>
-      <h2>Un espace pensé pour chaque personne autour du patient</h2>
-      <p class="lede">Chaque profil a son propre tableau de bord, adapté à son rôle dans le parcours de soin.</p>
+    <div class="role-intro">
+      <div class="section-head left">
+        <p class="eyebrow">Pour qui</p>
+        <h2>Un espace pensé pour chaque personne autour du patient</h2>
+        <p class="lede">Chaque profil a son propre tableau de bord, adapté à son rôle dans le parcours de soin. Vous choisissez votre profil à la création du compte.</p>
+      </div>
+      <img src="img/shot-profils.jpg" alt="Écran de sélection de profil WarriorsCare : patient, parent, médecin, infirmier, bénévole, structure de santé, association.">
     </div>
     <div class="grid grid-4">
-      <div class="role-card reveal"><span class="role-tag">Patient</span><p>Suivez votre état, vos crises et votre traitement au même endroit.</p></div>
-      <div class="role-card reveal"><span class="role-tag">Parent</span><p>Accompagnez un enfant drépanocytaire et gardez un œil sur son quotidien.</p></div>
-      <div class="role-card reveal"><span class="role-tag">Médecin</span><p>Consultez l'historique de vos patients et suivez les signalements de crise.</p></div>
-      <div class="role-card reveal"><span class="role-tag">Infirmier·ère</span><p>Coordonnez le suivi de terrain et les soins entre les visites.</p></div>
-      <div class="role-card reveal"><span class="role-tag">Bénévole</span><p>Répondez aux demandes d'aide et donnez de votre temps là où c'est utile.</p></div>
-      <div class="role-card reveal"><span class="role-tag">Association</span><p>Organisez des actions, publiez des ressources et animez la communauté.</p></div>
-      <div class="role-card reveal"><span class="role-tag">Structure de santé</span><p>Faites connaître vos services et restez joignable pour les patients.</p></div>
+      <div class="role-card reveal"><span class="role-tag"><span class="role-emoji" aria-hidden="true">👤</span>Patient</span><p>Suivez votre état, vos crises et votre traitement au même endroit.</p></div>
+      <div class="role-card reveal"><span class="role-tag"><span class="role-emoji" aria-hidden="true">👨‍👩‍👦</span>Parent</span><p>Accompagnez un enfant drépanocytaire et gardez un œil sur son quotidien.</p></div>
+      <div class="role-card reveal"><span class="role-tag"><span class="role-emoji" aria-hidden="true">🩺</span>Médecin</span><p>Consultez l'historique de vos patients et suivez les signalements de crise.</p></div>
+      <div class="role-card reveal"><span class="role-tag"><span class="role-emoji" aria-hidden="true">💉</span>Infirmier·ère</span><p>Coordonnez le suivi de terrain et les soins entre les visites.</p></div>
+      <div class="role-card reveal"><span class="role-tag"><span class="role-emoji" aria-hidden="true">🤝</span>Bénévole</span><p>Répondez aux demandes d'aide et donnez de votre temps là où c'est utile.</p></div>
+      <div class="role-card reveal"><span class="role-tag"><span class="role-emoji" aria-hidden="true">🏢</span>Association</span><p>Organisez des actions, publiez des ressources et animez la communauté.</p></div>
+      <div class="role-card reveal"><span class="role-tag"><span class="role-emoji" aria-hidden="true">🏥</span>Structure de santé</span><p>Faites connaître vos services et restez joignable pour les patients.</p></div>
       <div class="role-card reveal" style="background:var(--c-green-soft); border-color:transparent;">
         <span class="role-tag" style="background:var(--c-white);">Vous ne savez pas trop ?</span>
         <p>Créez un compte, votre espace s'adapte automatiquement à votre profil.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="difference" style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Pourquoi WarriorsCare</p>
+      <h2>Une application pensée avec, et pour, la communauté</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-item reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>Pensée avec des patients drépanocytaires</span>
+      </div>
+      <div class="why-item reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>Simple à prendre en main, sans jargon médical</span>
+      </div>
+      <div class="why-item reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>Données de santé sécurisées et confidentielles</span>
+      </div>
+      <div class="why-item reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>Accessible partout, y compris en zones à faible connexion</span>
+      </div>
+      <div class="why-item reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>Gratuite pour les patients et les familles</span>
       </div>
     </div>
   </div>
@@ -209,6 +254,10 @@
           <a class="btn btn-primary" href="https://drepanosmobile.expo.app" target="_blank" rel="noopener">Ouvrir l'application web</a>
           <a class="btn btn-ghost" href="faq.html">Consulter la FAQ</a>
         </div>
+        <div class="app-badge" style="margin-top:18px;">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85a.637.637 0 0 0-.83.22l-1.88 3.24a11.463 11.463 0 0 0-9.02 0L5.57 5.67a.637.637 0 0 0-.83-.22c-.3.16-.42.54-.26.85L6.32 9.48C3.3 11.25 1.28 14.44 1 18h22c-.28-3.56-2.3-6.75-5.4-8.52M7 15.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5m10 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5"/></svg>
+          <span class="badge-text"><small>Bientôt disponible</small><strong>Android — téléchargement direct</strong></span>
+        </div>
       </div>
       <ul class="download-list">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Application web — disponible maintenant</li>
@@ -219,18 +268,29 @@
   </div>
 </section>
 
+<section id="banniere">
+  <div class="wrap">
+    <div class="closing-banner reveal">
+      <img src="img/hero-banner.jpg" alt="WarriorsCare, votre compagnon santé au quotidien face à la drépanocytose — ensemble, plus forts face à la drépanocytose.">
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     <div class="footer-grid">
       <div>
         <a class="brand" href="index.html" style="margin-bottom:12px; display:inline-flex;">
-          <svg class="brand-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-            <circle cx="14" cy="20" r="9" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
-            <path d="M26 11c6 0 8 5 8 9s-2 9-8 9c3-2 4-6 4-9s-1-7-4-9z" fill="#D32F2F" stroke="#D32F2F" stroke-width="1"/>
-          </svg>
+          <img class="brand-mark" src="logo.png" alt="Logo WarriorsCare">
           WarriorsCare
         </a>
         <p style="color:var(--c-ink-soft); font-size:0.92rem; max-width:280px;">Le compagnon santé des personnes vivant avec la drépanocytose et de leur entourage.</p>
+        <div class="social-icons">
+          <a href="#" aria-label="WarriorsCare sur Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.45 2.91h-2.33V22c4.78-.79 8.44-4.94 8.44-9.94"/></svg></a>
+          <a href="#" aria-label="WarriorsCare sur Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s.02-3.58.07-4.85c.15-3.23 1.67-4.77 4.92-4.92 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.69.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95C23.72 2.7 21.3.27 16.95.07 15.67.01 15.26 0 12 0m0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84M12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8m6.41-10.85a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0"/></svg></a>
+          <a href="#" aria-label="WarriorsCare sur LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.45zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14M7.12 20.45H3.56V9h3.56z"/></svg></a>
+          <a href="#" aria-label="WarriorsCare sur WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.29-.15-1.7-.84-1.97-.93-.26-.1-.46-.15-.65.15-.19.29-.75.93-.92 1.13-.17.19-.34.22-.63.07-.29-.15-1.22-.45-2.33-1.44-.86-.77-1.44-1.72-1.61-2.01-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.65-1.58-.9-2.16-.24-.57-.48-.5-.65-.5-.17 0-.36-.02-.56-.02s-.51.07-.78.36c-.26.29-1.02 1-1.02 2.43s1.04 2.82 1.19 3.01c.15.19 2.05 3.13 4.96 4.39.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.11.55-.08 1.7-.7 1.94-1.37.24-.68.24-1.26.17-1.38-.07-.12-.26-.19-.55-.34M12.02 22h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37A9.86 9.86 0 0 1 2.1 12C2.1 6.53 6.55 2.08 12.02 2.08c2.64 0 5.12 1.03 6.98 2.9a9.82 9.82 0 0 1 2.9 6.98c0 5.47-4.45 9.93-9.88 9.93m8.41-18.34A11.82 11.82 0 0 0 12.02.08C5.44.08.1 5.42.1 12c0 2.11.55 4.16 1.6 5.98L0 24l6.18-1.62a11.9 11.9 0 0 0 5.83 1.49h.01c6.57 0 11.92-5.34 11.92-11.92 0-3.19-1.24-6.18-3.51-8.43"/></svg></a>
+        </div>
       </div>
       <div>
         <h4>Navigation</h4>
