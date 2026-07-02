@@ -1,6 +1,21 @@
 // WarriorsCare — interactions partagées
 
+// Dès que l'application est publiée sur le Play Store, renseignez son URL ici :
+// les deux boutons "Télécharger" (nav + hero) pointeront automatiquement dessus.
+const PLAY_STORE_URL = null; // ex: "https://play.google.com/store/apps/details?id=com.audreyliyah.DrepanosMobile"
+
 document.addEventListener('DOMContentLoaded', () => {
+  if (PLAY_STORE_URL) {
+    ['nav-download-btn', 'hero-download-btn'].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.href = PLAY_STORE_URL;
+        el.target = '_blank';
+        el.rel = 'noopener';
+      }
+    });
+  }
+
   // Menu mobile
   const toggle = document.querySelector('.nav-toggle');
   const links = document.querySelector('.nav-links');
