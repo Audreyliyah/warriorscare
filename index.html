@@ -1,1 +1,720 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Warriors Care — Application Santé Drépanocytose</title>
+  <meta name="description" content="Warriors Care est l'application mobile gratuite dédiée aux patients drépanocytaires, leurs familles et les soignants en Afrique. Suivi santé, alertes, chat médecin, dons de sang." />
+  <meta name="keywords" content="drépanocytose, application santé, Afrique, Warriors Care, sickle cell" />
+  <meta property="og:title" content="Warriors Care — Santé Drépanocytose" />
+  <meta property="og:description" content="L'application gratuite pour les patients drépanocytaires en Afrique francophone." />
+  <meta property="og:url" content="https://warriorscare.org" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --green: #2E7D32;
+      --green-light: #E8F5E9;
+      --green-dark: #1B5E20;
+      --red: #D32F2F;
+      --white: #FFFFFF;
+      --cream: #FAFAF8;
+      --dark: #111827;
+      --mid: #374151;
+      --gray: #6B7280;
+      --border: #E5E7EB;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); color: var(--dark); background: var(--white); line-height: 1.6; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 68px;
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo-icon { width: 40px; height: 40px; font-size: 28px; }
+    .nav-logo-text { font-family: var(--sans); font-weight: 700; font-size: 18px; color: var(--green); letter-spacing: -0.3px; }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a { text-decoration: none; color: var(--mid); font-size: 15px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--green); }
+    .nav-cta {
+      background: var(--green); color: var(--white) !important;
+      padding: 10px 22px; border-radius: 10px; font-weight: 600 !important;
+    }
+    .nav-cta:hover { background: var(--green-dark) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 100px 5% 60px;
+      background: linear-gradient(135deg, #FAFAF8 0%, #E8F5E9 50%, #F1F8E9 100%);
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -100px; right: -100px;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(46,125,50,0.08) 0%, transparent 70%);
+    }
+    .hero-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green); color: var(--white);
+      padding: 6px 14px; border-radius: 20px;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.5px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: var(--serif); font-size: clamp(36px, 5vw, 58px);
+      line-height: 1.1; color: var(--dark); margin-bottom: 20px;
+    }
+    .hero h1 em { font-style: italic; color: var(--green); }
+    .hero-sub { font-size: 18px; color: var(--mid); margin-bottom: 36px; line-height: 1.7; max-width: 480px; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 48px; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green); color: var(--white);
+      padding: 16px 28px; border-radius: 12px;
+      font-size: 16px; font-weight: 600; text-decoration: none;
+      transition: all 0.2s; box-shadow: 0 4px 14px rgba(46,125,50,0.3);
+    }
+    .btn-primary:hover { background: var(--green-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(46,125,50,0.4); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--white); color: var(--green);
+      padding: 16px 28px; border-radius: 12px;
+      font-size: 16px; font-weight: 600; text-decoration: none;
+      border: 2px solid var(--green); transition: all 0.2s;
+    }
+    .btn-secondary:hover { background: var(--green-light); }
+    .hero-stats { display: flex; gap: 32px; }
+    .hero-stat-num { font-family: var(--serif); font-size: 28px; color: var(--green); display: block; }
+    .hero-stat-label { font-size: 13px; color: var(--gray); }
+    .hero-visual { position: relative; }
+    .phone-mockup {
+      background: var(--dark); border-radius: 40px; padding: 12px;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.25);
+      max-width: 280px; margin: 0 auto;
+      transform: rotate(2deg);
+    }
+    .phone-screen {
+      background: var(--green-light); border-radius: 30px;
+      padding: 24px 16px; min-height: 480px;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .phone-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .phone-logo { font-size: 28px; }
+    .phone-title { font-weight: 700; font-size: 15px; color: var(--green-dark); }
+    .phone-card {
+      background: var(--white); border-radius: 14px; padding: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .phone-card-label { font-size: 11px; color: var(--gray); margin-bottom: 4px; }
+    .phone-card-val { font-weight: 700; font-size: 22px; color: var(--green); }
+    .phone-card-sub { font-size: 11px; color: var(--gray); }
+    .phone-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .phone-mini { background: var(--white); border-radius: 12px; padding: 12px; text-align: center; }
+    .phone-mini-icon { font-size: 20px; margin-bottom: 4px; }
+    .phone-mini-text { font-size: 10px; color: var(--mid); font-weight: 600; }
+    .phone-alert { background: #FEF3C7; border-radius: 12px; padding: 12px; display: flex; gap: 8px; align-items: center; }
+    .phone-alert-text { font-size: 11px; color: #92400E; font-weight: 500; }
+    .phone-btn { background: var(--red); border-radius: 10px; padding: 12px; text-align: center; }
+    .phone-btn-text { color: var(--white); font-weight: 700; font-size: 13px; }
+    .floating-badge {
+      position: absolute; background: var(--white);
+      border-radius: 14px; padding: 10px 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600; color: var(--dark);
+    }
+    .badge-top { top: 20px; right: -20px; }
+    .badge-bottom { bottom: 40px; left: -30px; }
+    .badge-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+    /* ── SECTION BASE ── */
+    section { padding: 100px 5%; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; color: var(--green); text-transform: uppercase; margin-bottom: 12px; }
+    .section-title { font-family: var(--serif); font-size: clamp(28px, 4vw, 44px); color: var(--dark); margin-bottom: 16px; line-height: 1.2; }
+    .section-sub { font-size: 17px; color: var(--gray); max-width: 560px; line-height: 1.7; }
+
+    /* ── STATS BAND ── */
+    .stats-band { background: var(--green); padding: 60px 5%; }
+    .stats-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; }
+    .stat-item { text-align: center; }
+    .stat-num { font-family: var(--serif); font-size: 48px; color: var(--white); display: block; line-height: 1; }
+    .stat-label { font-size: 14px; color: rgba(255,255,255,0.8); margin-top: 8px; }
+
+    /* ── FEATURES ── */
+    .features { background: var(--cream); }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px; }
+    .feature-card {
+      background: var(--white); border-radius: 20px; padding: 28px;
+      border: 1px solid var(--border); transition: all 0.3s;
+    }
+    .feature-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); border-color: var(--green); }
+    .feature-icon { font-size: 36px; margin-bottom: 16px; display: block; }
+    .feature-title { font-weight: 700; font-size: 17px; color: var(--dark); margin-bottom: 8px; }
+    .feature-desc { font-size: 14px; color: var(--gray); line-height: 1.6; }
+    .feature-tag { display: inline-block; background: var(--green-light); color: var(--green); font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; margin-top: 12px; }
+
+    /* ── PROFILES ── */
+    .profiles-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 60px; }
+    .profile-card { border-radius: 16px; padding: 24px; text-align: center; }
+    .profile-icon { font-size: 32px; margin-bottom: 10px; }
+    .profile-name { font-weight: 700; font-size: 14px; color: var(--dark); margin-bottom: 6px; }
+    .profile-desc { font-size: 12px; color: var(--gray); line-height: 1.5; }
+
+    /* ── DOWNLOAD ── */
+    .download { background: var(--dark); }
+    .download-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .download h2 { font-family: var(--serif); font-size: clamp(28px, 4vw, 44px); color: var(--white); margin-bottom: 16px; }
+    .download p { color: rgba(255,255,255,0.7); font-size: 17px; line-height: 1.7; margin-bottom: 36px; }
+    .download-btns { display: flex; flex-direction: column; gap: 14px; }
+    .download-btn {
+      display: flex; align-items: center; gap: 16px;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 14px; padding: 18px 24px; text-decoration: none;
+      transition: all 0.2s;
+    }
+    .download-btn:hover { background: rgba(255,255,255,0.15); border-color: var(--green); }
+    .download-btn-icon { font-size: 32px; }
+    .download-btn-label { font-size: 11px; color: rgba(255,255,255,0.6); }
+    .download-btn-text { font-size: 17px; font-weight: 700; color: var(--white); }
+    .download-qr { background: rgba(255,255,255,0.05); border-radius: 20px; padding: 40px; text-align: center; border: 1px solid rgba(255,255,255,0.1); }
+    .qr-placeholder { width: 160px; height: 160px; background: var(--white); border-radius: 12px; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 48px; }
+    .qr-label { color: rgba(255,255,255,0.6); font-size: 13px; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { background: var(--cream); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px; }
+    .testimonial-card { background: var(--white); border-radius: 20px; padding: 28px; border: 1px solid var(--border); }
+    .testimonial-stars { color: #F59E0B; font-size: 16px; margin-bottom: 14px; }
+    .testimonial-text { font-size: 15px; color: var(--mid); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .testimonial-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--green-light); display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    .testimonial-name { font-weight: 700; font-size: 14px; color: var(--dark); }
+    .testimonial-role { font-size: 12px; color: var(--gray); }
+
+    /* ── MISSION ── */
+    .mission { background: var(--white); }
+    .mission-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .mission-img { background: var(--green-light); border-radius: 24px; padding: 40px; text-align: center; font-size: 80px; }
+    .mission h2 { font-family: var(--serif); font-size: clamp(28px, 3.5vw, 40px); color: var(--dark); margin-bottom: 20px; }
+    .mission p { font-size: 16px; color: var(--mid); line-height: 1.8; margin-bottom: 16px; }
+    .mission-values { display: flex; flex-direction: column; gap: 14px; margin-top: 28px; }
+    .mission-value { display: flex; align-items: flex-start; gap: 12px; }
+    .mission-value-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+    .mission-value-text { font-size: 15px; color: var(--mid); line-height: 1.6; }
+    .mission-value-text strong { color: var(--dark); }
+
+    /* ── PARTENAIRES ── */
+    .partners { background: var(--green-light); padding: 60px 5%; }
+    .partners-inner { max-width: 1200px; margin: 0 auto; text-align: center; }
+    .partners h3 { font-size: 14px; font-weight: 600; color: var(--gray); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 32px; }
+    .partners-logos { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 40px; }
+    .partner-logo { font-size: 14px; font-weight: 700; color: var(--green-dark); opacity: 0.7; }
+
+    /* ── CONTACT ── */
+    .contact { background: var(--white); }
+    .contact-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+    .contact h2 { font-family: var(--serif); font-size: clamp(28px, 4vw, 44px); color: var(--dark); margin-bottom: 16px; }
+    .contact p { font-size: 17px; color: var(--gray); margin-bottom: 40px; }
+    .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 40px; }
+    .contact-card { background: var(--cream); border-radius: 16px; padding: 24px; text-align: center; }
+    .contact-card-icon { font-size: 28px; margin-bottom: 10px; }
+    .contact-card-title { font-weight: 700; font-size: 14px; color: var(--dark); margin-bottom: 6px; }
+    .contact-card-val { font-size: 13px; color: var(--green); text-decoration: none; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--dark); padding: 60px 5% 30px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 48px; }
+    .footer-brand p { color: rgba(255,255,255,0.6); font-size: 14px; line-height: 1.7; margin-top: 12px; max-width: 280px; }
+    .footer-col h4 { color: var(--white); font-size: 14px; font-weight: 700; margin-bottom: 16px; }
+    .footer-col a { display: block; color: rgba(255,255,255,0.6); font-size: 14px; text-decoration: none; margin-bottom: 10px; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; }
+    .footer-copy { color: rgba(255,255,255,0.4); font-size: 13px; }
+    .footer-heart { color: var(--red); }
+
+    /* ── MOBILE ── */
+    .mobile-menu-btn { display: none; background: none; border: none; font-size: 24px; cursor: pointer; }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .mobile-menu-btn { display: block; }
+      .hero-content { grid-template-columns: 1fr; gap: 40px; }
+      .hero-visual { display: none; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .features-grid { grid-template-columns: 1fr; }
+      .profiles-grid { grid-template-columns: repeat(2, 1fr); }
+      .download-inner { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .mission-inner { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#" class="nav-logo">
+    <span class="nav-logo-icon">⚔️</span>
+    <span class="nav-logo-text">Warriors Care</span>
+  </a>
+  <div class="nav-links">
+    <a href="#fonctionnalites">Fonctionnalités</a>
+    <a href="#telecharger">Télécharger</a>
+    <a href="#temoignages">Témoignages</a>
+    <a href="#mission">Notre mission</a>
+    <a href="#contact">Contact</a>
+    <a href="https://drepanosmobile.expo.app" target="_blank" class="nav-cta">🌐 Accéder à l'app</a>
+  </div>
+  <button class="mobile-menu-btn">☰</button>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="accueil">
+  <div class="hero-content">
+    <div>
+      <div class="hero-eyebrow">🌍 Lancée le 19 juin 2026 — Journée Mondiale</div>
+      <h1>Ensemble, plus forts face à la <em>drépanocytose</em></h1>
+      <p class="hero-sub">Warriors Care connecte patients, familles et soignants dans un écosystème numérique dédié à la prise en charge de la drépanocytose en Afrique francophone.</p>
+      <div class="hero-actions">
+        <a href="#telecharger" class="btn-primary">📱 Télécharger l'app</a>
+        <a href="https://drepanosmobile.expo.app" target="_blank" class="btn-secondary">🌐 Version web</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <span class="hero-stat-num">50M+</span>
+          <span class="hero-stat-label">personnes touchées</span>
+        </div>
+        <div>
+          <span class="hero-stat-num">65%</span>
+          <span class="hero-stat-label">en Afrique</span>
+        </div>
+        <div>
+          <span class="hero-stat-num">100%</span>
+          <span class="hero-stat-label">gratuit</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="phone-mockup">
+        <div class="phone-screen">
+          <div class="phone-header">
+            <span class="phone-logo">⚔️</span>
+            <span class="phone-title">Warriors Care</span>
+          </div>
+          <div class="phone-alert">
+            <span>⛅</span>
+            <span class="phone-alert-text">27°C · Hydratez-vous davantage aujourd'hui</span>
+          </div>
+          <div class="phone-card">
+            <div class="phone-card-label">Score de risque aujourd'hui</div>
+            <div class="phone-card-val">Faible ✅</div>
+            <div class="phone-card-sub">Hydratation 2.5L · Douleur 2/10</div>
+          </div>
+          <div class="phone-grid">
+            <div class="phone-mini"><div class="phone-mini-icon">💧</div><div class="phone-mini-text">Hydratation</div></div>
+            <div class="phone-mini"><div class="phone-mini-icon">😴</div><div class="phone-mini-text">Sommeil</div></div>
+            <div class="phone-mini"><div class="phone-mini-icon">💊</div><div class="phone-mini-text">Médicaments</div></div>
+            <div class="phone-mini"><div class="phone-mini-icon">💬</div><div class="phone-mini-text">Médecin</div></div>
+          </div>
+          <div class="phone-btn">
+            <div class="phone-btn-text">🚨 Je suis en crise</div>
+          </div>
+        </div>
+      </div>
+      <div class="floating-badge badge-top">
+        <span>🩺</span> <span>Médecin disponible</span>
+        <span class="badge-dot" style="background:#10B981"></span>
+      </div>
+      <div class="floating-badge badge-bottom">
+        <span>🩸</span> <span>Don de sang · Yaoundé</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS ── -->
+<div class="stats-band">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <span class="stat-num">7</span>
+      <div class="stat-label">Profils utilisateurs</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">25+</span>
+      <div class="stat-label">Écrans fonctionnels</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">15+</span>
+      <div class="stat-label">Pays couverts</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">100%</span>
+      <div class="stat-label">Gratuit & sans pub</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FEATURES ── -->
+<section class="features" id="fonctionnalites">
+  <div class="section-inner">
+    <div class="section-eyebrow">Fonctionnalités</div>
+    <h2 class="section-title">Tout ce dont vous avez besoin,<br>dans une seule application</h2>
+    <p class="section-sub">Warriors Care couvre tous les aspects de la vie avec la drépanocytose, du quotidien aux urgences.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">📊</span>
+        <div class="feature-title">Suivi santé quotidien</div>
+        <div class="feature-desc">Enregistrez votre douleur, hydratation, sommeil et humeur. Un score de risque automatique vous alerte en cas de danger.</div>
+        <span class="feature-tag">Patients & Parents</span>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🚨</span>
+        <div class="feature-title">Mode urgence</div>
+        <div class="feature-desc">En cas de crise, signalez votre état en un tap. Les soignants et bénévoles reçoivent une alerte immédiate.</div>
+        <span class="feature-tag">Urgences</span>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">💬</span>
+        <div class="feature-title">Chat avec les soignants</div>
+        <div class="feature-desc">Communiquez en temps réel avec médecins, infirmiers et bénévoles. Demandez de l'aide ciblée par spécialité.</div>
+        <span class="feature-tag">Temps réel</span>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🌡️</span>
+        <div class="feature-title">Alertes météo</div>
+        <div class="feature-desc">La chaleur et le froid déclenchent des crises. Warriors Care vous alerte automatiquement selon la météo locale.</div>
+        <span class="feature-tag">Prévention</span>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🩸</span>
+        <div class="feature-title">Don de sang & médicaments</div>
+        <div class="feature-desc">Publiez une demande de sang urgente ou proposez des médicaments. La communauté répond en quelques minutes.</div>
+        <span class="feature-tag">Entraide</span>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📚</span>
+        <div class="feature-title">Éducation médicale</div>
+        <div class="feature-desc">Fiches validées par des médecins, conseils cliniques quotidiens, carnet de vaccination et courbe de croissance.</div>
+        <span class="feature-tag">Savoir</span>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🏢</span>
+        <div class="feature-title">Annuaire des associations</div>
+        <div class="feature-desc">Trouvez et rejoignez une association drépanocytose près de chez vous. Réseau actif dans 15+ pays.</div>
+        <span class="feature-tag">Communauté</span>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🤝</span>
+        <div class="feature-title">Parrainage</div>
+        <div class="feature-desc">Système de mentorat entre patients et bénévoles. Personne ne devrait traverser ça seul.</div>
+        <span class="feature-tag">Soutien</span>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🗺️</span>
+        <div class="feature-title">Carte des soins</div>
+        <div class="feature-desc">Localisez les hôpitaux, cliniques et pharmacies qui traitent la drépanocytose près de chez vous.</div>
+        <span class="feature-tag">Réseau</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROFILS ── -->
+<section style="background: var(--white); padding: 80px 5%;">
+  <div class="section-inner">
+    <div class="section-eyebrow">Pour tout le monde</div>
+    <h2 class="section-title">Une app pour chaque acteur de santé</h2>
+    <div class="profiles-grid">
+      <div class="profile-card" style="background:#FEF2F2">
+        <div class="profile-icon">❤️</div>
+        <div class="profile-name">Patient</div>
+        <div class="profile-desc">Suivi santé, alertes, carte urgence, médicaments</div>
+      </div>
+      <div class="profile-card" style="background:#FFFBEB">
+        <div class="profile-icon">👨‍👩‍👧</div>
+        <div class="profile-name">Parent / Aidant</div>
+        <div class="profile-desc">Suivi enfant, croissance, vaccination, parrainage</div>
+      </div>
+      <div class="profile-card" style="background:#E8F5E9">
+        <div class="profile-icon">🩺</div>
+        <div class="profile-name">Médecin</div>
+        <div class="profile-desc">Alertes crises, demandes filtrées, dashboard clinique</div>
+      </div>
+      <div class="profile-card" style="background:#F0FDF4">
+        <div class="profile-icon">🛡️</div>
+        <div class="profile-name">Infirmier(e)</div>
+        <div class="profile-desc">Notes de soins, agenda, rappels, objectifs</div>
+      </div>
+      <div class="profile-card" style="background:#F5F3FF">
+        <div class="profile-icon">🤝</div>
+        <div class="profile-name">Bénévole</div>
+        <div class="profile-desc">Demandes d'aide, chat patients, parrainage</div>
+      </div>
+      <div class="profile-card" style="background:#EFF6FF">
+        <div class="profile-icon">🏥</div>
+        <div class="profile-name">Structure de santé</div>
+        <div class="profile-desc">Profil établissement, lits, services, géoloc</div>
+      </div>
+      <div class="profile-card" style="background:#FDF2F8">
+        <div class="profile-icon">🏢</div>
+        <div class="profile-name">Association</div>
+        <div class="profile-desc">Membres, forum, groupes de discussion</div>
+      </div>
+      <div class="profile-card" style="background:#F9FAFB">
+        <div class="profile-icon">👥</div>
+        <div class="profile-name">Forum communautaire</div>
+        <div class="profile-desc">Posts, likes, commentaires, groupes pays</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DOWNLOAD ── -->
+<section class="download" id="telecharger">
+  <div class="download-inner section-inner">
+    <div>
+      <div class="section-eyebrow" style="color:rgba(255,255,255,0.6)">Téléchargement</div>
+      <h2>Disponible maintenant,<br>sur tous vos appareils</h2>
+      <p>Warriors Care fonctionne sur Android, iOS et directement dans votre navigateur. Choisissez votre plateforme et commencez gratuitement.</p>
+      <div class="download-btns">
+        <a href="https://drepanosmobile.expo.app" target="_blank" class="download-btn">
+          <span class="download-btn-icon">🌐</span>
+          <div>
+            <div class="download-btn-label">ACCÉDER SUR</div>
+            <div class="download-btn-text">Application Web</div>
+          </div>
+        </a>
+        <a href="#" class="download-btn" id="apk-btn">
+          <span class="download-btn-icon">🤖</span>
+          <div>
+            <div class="download-btn-label">TÉLÉCHARGER POUR</div>
+            <div class="download-btn-text">Android (APK) — Bientôt</div>
+          </div>
+        </a>
+        <a href="#" class="download-btn">
+          <span class="download-btn-icon">🍎</span>
+          <div>
+            <div class="download-btn-label">BIENTÔT SUR</div>
+            <div class="download-btn-text">App Store iOS</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="download-qr">
+      <div class="qr-placeholder">📱</div>
+      <p class="qr-label">Scannez pour accéder à l'application web</p>
+      <div style="margin-top: 20px; padding: 14px; background: rgba(255,255,255,0.05); border-radius: 10px;">
+        <div style="color: rgba(255,255,255,0.5); font-size: 12px; margin-bottom: 6px;">URL directe</div>
+        <div style="color: #fff; font-weight: 600; font-size: 14px;">drepanosmobile.expo.app</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="testimonials" id="temoignages">
+  <div class="section-inner">
+    <div class="section-eyebrow">Témoignages</div>
+    <h2 class="section-title">Ce que dit notre communauté</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Enfin une application qui comprend notre réalité. Le suivi quotidien m'aide à anticiper les crises et à mieux communiquer avec mon médecin."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">❤️</div>
+          <div>
+            <div class="testimonial-name">Aminata K.</div>
+            <div class="testimonial-role">Patiente drépanocytaire · Dakar, Sénégal</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"En tant que pédiatre, le tableau de bord me permet de suivre les alertes de mes patients drépanocytaires en temps réel. Indispensable."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">🩺</div>
+          <div>
+            <div class="testimonial-name">Dr. Emmanuel N.</div>
+            <div class="testimonial-role">Pédiatre · Yaoundé, Cameroun</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Grâce au système de don de sang, j'ai pu trouver un donneur compatible en moins de 2 heures lors de la crise de ma fille. Cette app sauve des vies."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">👨‍👩‍👧</div>
+          <div>
+            <div class="testimonial-name">Marie-Claire B.</div>
+            <div class="testimonial-role">Maman d'un enfant SS · Abidjan, Côte d'Ivoire</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MISSION ── -->
+<section class="mission" id="mission">
+  <div class="mission-inner section-inner">
+    <div class="mission-img">💙<br><br>
+      <div style="font-family: var(--serif); font-size: 24px; color: var(--green-dark); margin-top: 8px;">Ensemble, plus forts</div>
+    </div>
+    <div>
+      <div class="section-eyebrow">Notre mission</div>
+      <h2>Personne ne devrait lutter seul contre la drépanocytose</h2>
+      <p>Warriors Care est née d'un constat simple : 50 millions de personnes souffrent de drépanocytose dans le monde, dont 65% en Afrique subsaharienne, et pourtant aucune plateforme numérique francophone n'existait pour les soutenir.</p>
+      <p>Nous avons construit l'écosystème qui manquait — gratuit, accessible, et pensé pour les réalités africaines.</p>
+      <div class="mission-values">
+        <div class="mission-value">
+          <span class="mission-value-icon">🌍</span>
+          <div class="mission-value-text"><strong>Adapté à l'Afrique</strong> — Authentification par téléphone, 40+ pays, interface en français</div>
+        </div>
+        <div class="mission-value">
+          <span class="mission-value-icon">🔒</span>
+          <div class="mission-value-text"><strong>Données sécurisées</strong> — Chiffrement HTTPS, aucune vente de données, RGPD</div>
+        </div>
+        <div class="mission-value">
+          <span class="mission-value-icon">💚</span>
+          <div class="mission-value-text"><strong>100% gratuit</strong> — Aucune publicité, aucun abonnement, toujours gratuit pour les patients</div>
+        </div>
+        <div class="mission-value">
+          <span class="mission-value-icon">🏥</span>
+          <div class="mission-value-text"><strong>Validé médicalement</strong> — Contenus révisés par des médecins spécialisés en hématologie</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PARTENAIRES ── -->
+<div class="partners">
+  <div class="partners-inner">
+    <h3>Nous cherchons des partenaires pour grandir ensemble</h3>
+    <div class="partners-logos">
+      <span class="partner-logo">🏥 Hôpitaux partenaires</span>
+      <span class="partner-logo">🏢 Associations drépanocytose</span>
+      <span class="partner-logo">🌍 ONG Santé Afrique</span>
+      <span class="partner-logo">💊 Laboratoires pharmaceutiques</span>
+      <span class="partner-logo">📱 Opérateurs télécom</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── CONTACT ── -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="section-eyebrow">Contact</div>
+    <h2>Travaillons ensemble</h2>
+    <p>Vous êtes une association, un hôpital, un bailleur ou un partenaire ? Contactez-nous pour rejoindre l'aventure Warriors Care.</p>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-card-icon">🌐</div>
+        <div class="contact-card-title">Application web</div>
+        <a href="https://drepanosmobile.expo.app" target="_blank" class="contact-card-val">drepanosmobile.expo.app</a>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-icon">💻</div>
+        <div class="contact-card-title">Code source</div>
+        <a href="https://github.com/Audreyliyah/sickle-cell-ally" target="_blank" class="contact-card-val">github.com/Audreyliyah</a>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-icon">📧</div>
+        <div class="contact-card-title">Email</div>
+        <a href="mailto:contact@warriorscare.org" class="contact-card-val">contact@warriorscare.org</a>
+      </div>
+    </div>
+    <a href="https://drepanosmobile.expo.app" target="_blank" class="btn-primary" style="font-size: 16px; padding: 18px 36px;">
+      🚀 Accéder à Warriors Care gratuitement
+    </a>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="margin-bottom: 12px; display: inline-flex;">
+          <span style="font-size: 28px;">⚔️</span>
+          <span style="font-family: var(--sans); font-weight: 700; font-size: 18px; color: #fff; margin-left: 10px;">Warriors Care</span>
+        </a>
+        <p>L'application mobile gratuite pour les patients drépanocytaires, leurs familles et les soignants en Afrique francophone.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Application</h4>
+        <a href="https://drepanosmobile.expo.app" target="_blank">Version web</a>
+        <a href="#telecharger">Android APK</a>
+        <a href="#fonctionnalites">Fonctionnalités</a>
+        <a href="#temoignages">Témoignages</a>
+      </div>
+      <div class="footer-col">
+        <h4>Organisation</h4>
+        <a href="#mission">Notre mission</a>
+        <a href="#contact">Partenariats</a>
+        <a href="https://github.com/Audreyliyah/sickle-cell-ally" target="_blank">GitHub</a>
+        <a href="privacy.html">Politique de confidentialité</a>
+      </div>
+      <div class="footer-col">
+        <h4>Ressources</h4>
+        <a href="#">Guide utilisateur</a>
+        <a href="#">FAQ</a>
+        <a href="#">Drépanocytose — infos</a>
+        <a href="#">Urgences pays</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Warriors Care. Tous droits réservés.</span>
+      <span class="footer-copy">Fait avec <span class="footer-heart">❤️</span> pour la communauté drépanocytaire africaine</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const href = a.getAttribute('href');
+      if (href === '#') return;
+      e.preventDefault();
+      const el = document.querySelector(href);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // Nav scroll effect
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 20) {
+      nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.08)';
+    } else {
+      nav.style.boxShadow = 'none';
+    }
+  });
+
+  // APK button — mettre à jour quand l'APK est prêt
+  document.getElementById('apk-btn').addEventListener('click', e => {
+    e.preventDefault();
+    alert('🔜 L\'APK Android sera disponible très prochainement !\n\nEn attendant, accédez à l\'application via votre navigateur :\ndrepanosmobile.expo.app');
+  });
+</script>
+</body>
+</html>
