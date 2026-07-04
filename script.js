@@ -1,17 +1,28 @@
 // WarriorsCare — interactions partagées
 
-// Dès que l'application est publiée sur le Play Store, renseignez son URL ici :
-// les deux boutons "Télécharger" (nav + hero) pointeront automatiquement dessus.
+// 1) Dès que l'APK est prêt et uploadé sur GitHub (ex: à la racine du repo),
+//    renseigne son nom de fichier ici pour activer le téléchargement direct :
+const APK_DOWNLOAD_URL = "https://expo.dev/artifacts/eas/fQJYqYLDRJp-cLe3CzLKu2Q-wjKbctsiUyOgZzzwHEI.apk";
+
+// 2) Une fois l'application publiée sur le Play Store, renseigne son URL ici :
+//    elle prendra automatiquement le dessus sur le téléchargement direct.
 const PLAY_STORE_URL = null; // ex: "https://play.google.com/store/apps/details?id=com.audreyliyah.DrepanosMobile"
 
 document.addEventListener('DOMContentLoaded', () => {
-  if (PLAY_STORE_URL) {
+  const downloadUrl = PLAY_STORE_URL || APK_DOWNLOAD_URL;
+  if (downloadUrl) {
     ['nav-download-btn', 'hero-download-btn'].forEach((id) => {
       const el = document.getElementById(id);
-      if (el) {
-        el.href = PLAY_STORE_URL;
+      if (!el) return;
+      el.href = downloadUrl;
+      if (PLAY_STORE_URL) {
         el.target = '_blank';
         el.rel = 'noopener';
+        el.removeAttribute('download');
+      } else {
+        el.target = '_blank';
+        el.rel = 'noopener';
+        el.removeAttribute('download'); // ignoré de toute façon pour un lien externe (cross-origin)
       }
     });
   }
