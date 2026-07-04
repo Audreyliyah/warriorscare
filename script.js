@@ -2,7 +2,7 @@
 
 // 1) Dès que l'APK est prêt et uploadé sur GitHub (ex: à la racine du repo),
 //    renseigne son nom de fichier ici pour activer le téléchargement direct :
-const APK_DOWNLOAD_URL = "https://expo.dev/artifacts/eas/fQJYqYLDRJp-cLe3CzLKu2Q-wjKbctsiUyOgZzzwHEI.apk";
+const APK_DOWNLOAD_URL = "https://github.com/Audreyliyah/warriorscare/releases/download/v1.0.0/warriorscare.apk";
 
 // 2) Une fois l'application publiée sur le Play Store, renseigne son URL ici :
 //    elle prendra automatiquement le dessus sur le téléchargement direct.
